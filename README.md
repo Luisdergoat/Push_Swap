@@ -372,13 +372,6 @@ $ ./checker 3 2 one 0
 Error
 ```
 
-**Integration Test:**
-
-```bash
-$ ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
-OK
-```
-
 ---
 
 ## 🚀 Instructions
@@ -443,66 +436,6 @@ for i in {1..10}; do
   echo "Test $i: $(./push_swap $ARG | wc -l) operations"
 done
 ```
-
----
-
-## 📚 Resources
-
-### Official Documentation
-- [42 Push_Swap Subject (EN)](./en.subject.pdf)
-
-### Sorting Algorithms
-- [Sorting Algorithm Visualizations](https://www.toptal.com/developers/sorting-algorithms)
-- [Big-O Complexity Chart](https://www.bigocheatsheet.com/)
-- [Radix Sort Explained](https://en.wikipedia.org/wiki/Radix_sort)
-- [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort)
-
-### Algorithm Strategies
-- [Turk Algorithm for Push_Swap](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)
-- [Chunking Method](https://stackoverflow.com/questions/tagged/push-swap)
-
-### Testing Tools
-- [Push_Swap Visualizer](https://github.com/o-reo/push_swap_visualizer)
-- [Push_Swap Tester](https://github.com/lmalki-h/push_swap_tester)
-
-### Complexity Analysis
-- Time Complexity: Understanding O(n²), O(n log n), O(n)
-- Space Complexity: Stack memory management
-
-### AI Usage Disclosure
-
-AI tools were used in the following ways during this project:
-
-- **Documentation**: Formatting and structure of this README
-- **Research**: Understanding different sorting algorithm approaches
-- **Debugging**: Identifying edge cases and error scenarios
-- **Code Review**: Verifying logic and catching potential bugs
-
-All code implementation, algorithmic decisions, and core logic were developed independently. AI was used as a supplementary learning and productivity tool, with all generated content carefully reviewed and validated.
-
----
-
-## 📝 Notes
-
-- The project must be written in **C**
-- Must comply with the **42 Norm**
-- No memory leaks tolerated
-- Proper error handling required
-- Global variables forbidden
-- Allowed external functions: `read`, `write`, `malloc`, `free`, `exit`
-- Your own `libft` is authorized
-
----
-
-## 🎯 Key Takeaways
-
-This project teaches:
-
-1. **Algorithm Optimization** - Finding the most efficient solution
-2. **Complexity Analysis** - Understanding time and space trade-offs
-3. **Data Structure Manipulation** - Working with stacks and linked lists
-4. **Problem Decomposition** - Breaking complex problems into manageable parts
-5. **Edge Case Handling** - Robust input validation and error management
 
 ---
 
