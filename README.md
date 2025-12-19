@@ -1,373 +1,510 @@
-# push_swap (42) — Data Structures & Operations Guide
+# Push_Swap
 
-This README focuses on **how to represent stacks using a linked list** and how to implement the core push_swap operations (especially pointer logic). It is written to be practical while coding.
+*This project has been created as part of the 42 curriculum by lunsold.*
 
 ---
 
-## Table of Contents
+## 📋 Table of Contents
 
-- [Project Idea (Quick)](#project-idea-quick)
-- [Data Structures](#data-structures)
-  - [`t_node` (a list node)](#t_node-a-list-node)
-  - [`t_list` / Stack wrapper](#t_list--stack-wrapper)
-  - [Invariants (Must Always Be True)](#invariants-must-always-be-true)
-- [Building Stack A (Append/Tail Method)](#building-stack-a-appendtail-method)
-- [Operations Overview](#operations-overview)
-- [Core Operations (Detailed Pointer Logic)](#core-operations-detailed-pointer-logic)
-  - [`pa` — push top of B to A](#pa--push-top-of-b-to-a)
-  - [`pb` — push top of A to B](#pb--push-top-of-a-to-b)
-  - [`sa` — swap first 2 elements of A](#sa--swap-first-2-elements-of-a)
-  - [`ra` — rotate A up](#ra--rotate-a-up)
-  - [`rra` — reverse rotate A](#rra--reverse-rotate-a)
+- [Description](#description)
+- [The Challenge](#the-challenge)
+- [Stack Operations](#stack-operations)
 - [Visual Examples](#visual-examples)
-  - [Example: `ra` on 3 elements](#example-ra-on-3-elements)
-  - [Example: `pa` when A already has elements](#example-pa-when-a-already-has-elements)
-- [Common Mistakes (and Why They Break)](#common-mistakes-and-why-they-break)
-- [Memory Rules](#memory-rules)
-- [Recommended File Layout](#recommended-file-layout)
+- [Program Specifications](#program-specifications)
+- [Performance Requirements](#performance-requirements)
+- [Bonus: Checker Program](#bonus-checker-program)
+- [Instructions](#instructions)
+- [Resources](#resources)
 
 ---
 
-## Project Idea (Quick)
+## 🎯 Description
 
-You receive numbers as input and must output a sequence of operations (`sa`, `pb`, `ra`, ...) that sorts them using:
+**Push_Swap** is an algorithmic challenge focused on sorting data efficiently using a limited set of operations. The project requires you to:
 
-- **Stack A** (initial numbers)
-- **Stack B** (initially empty)
+- Sort a stack of random integers in **ascending order**
+- Use only **two stacks** (stack `a` and stack `b`)
+- Execute a **limited set of stack operations**
+- Minimize the total number of operations required
 
-Your program does **not** print the sorted numbers directly. It prints the operations that would sort them.
+The goal is not just to sort the numbers, but to find the **most efficient sequence** of operations that accomplishes the task. This project introduces fundamental concepts of algorithmic complexity and optimization.
 
----
+### Why This Matters
 
-## Data Structures
+Sorting algorithms are a cornerstone of computer science and frequently appear in technical interviews. This project provides hands-on experience with:
 
-### `t_node` (a list node)
-
-A node represents **one element** in a stack.
-
-```
-[ value | prev | next ]
-```
-
-Example structure:
-
-- `value`: the integer stored
-- `prev`: pointer to the node above it (towards head/top)
-- `next`: pointer to the node below it (towards tail/bottom)
+- **Algorithm design** and optimization
+- **Complexity analysis** (time and space)
+- **Data structure manipulation**
+- **Problem-solving** under constraints
 
 ---
 
-### `t_list` / Stack wrapper
+## 🎲 The Challenge
 
-A stack is represented by a wrapper containing:
+### Initial State
 
-- `head` (top of stack)
-- `tail` (bottom of stack)
-- `size` (# of elements)
+At the start of the program:
 
-```
-t_list stack_a;
+- **Stack A** contains a random amount of unique integers (positive and/or negative)
+- **Stack B** is empty
 
-stack_a.head -> [top] <-> ... <-> [bottom] <- stack_a.tail
-stack_a.size = N
-```
+### Goal
 
----
+Sort all numbers in **stack A** in **ascending order** (smallest on top), using only the operations described below.
 
-### Invariants (Must Always Be True)
-
-These rules must always hold after every operation:
-
-1. If `size == 0`:
-   - `head == NULL`
-   - `tail == NULL`
-
-2. If `size == 1`:
-   - `head == tail`
-   - `head->prev == NULL`
-   - `head->next == NULL`
-
-3. If `size >= 2`:
-   - `head->prev == NULL`
-   - `tail->next == NULL`
-   - the list is fully connected by `next` and `prev`
-
-These invariants are your best debugging checklist.
-
----
-
-## Building Stack A (Append/Tail Method)
-
-You said you want the **Append/Tail** method:
-
-- Iterate input from left to right
-- Create one node per number
-- Append it to the end (`tail`)
-- This preserves input order automatically
-
-Visual:
+### Example
 
 ```
-Input:  3   9  -1
+Input:  2 1 3 6 5 8
 
-A: head -> [3] <-> [9] <-> [-1] <- tail
-```
+Initial State:
+┌───┐  ┌───┐
+│ 2 │  │   │
+│ 1 │  │   │
+│ 3 │  │   │
+│ 6 │  │   │
+│ 5 │  │   │
+│ 8 │  │   │
+└───┘  └───┘
+  a      b
 
-Append logic (conceptually):
-
-- If empty: `head = tail = new`
-- Else: link at the end:
-  - `new->prev = tail`
-  - `tail->next = new`
-  - `tail = new`
-- `size++`
-
----
-
-## Operations Overview
-
-push_swap operations manipulate **nodes**, not just values:
-
-- `sa` / `sb`: swap the first 2 nodes of a stack
-- `pa`: move top node from B to A
-- `pb`: move top node from A to B
-- `ra` / `rb`: rotate: top becomes bottom
-- `rra` / `rrb`: reverse rotate: bottom becomes top
-- `rr`, `ss`, `rrr`: combined operations (do both stacks)
-
----
-
-## Core Operations (Detailed Pointer Logic)
-
-Below, “A” and “B” are `t_list *`.
-
-### `pa` — push top of B to A
-
-**Goal:** remove `B.head` and make it the new `A.head`.
-
-Before:
-
-```
-B: head -> [x] <-> [...] <- tail
-A: head -> [a] <-> [b] <-> ... <- tail
-```
-
-After `pa`:
-
-```
-B: head -> [...] <- tail
-A: head -> [x] <-> [a] <-> [b] <-> ... <- tail
-```
-
-**Conditions:**
-- If `B.size == 0`: do nothing.
-
-**Key idea:** detach node from B, attach node to front of A.
-
-What must be updated:
-- `B.head` changes
-- maybe `B.tail` changes (if B becomes empty)
-- `A.head` changes
-- maybe `A.tail` changes (if A was empty)
-- `size` updates in both
-
----
-
-### `pb` — push top of A to B
-
-Same logic as `pa`, just swap roles:
-
-- move `A.head` to become new `B.head`
-
----
-
-### `sa` — swap first 2 elements of A
-
-If A has at least 2 nodes:
-
-Before:
-```
-A: head -> [1] <-> [2] <-> [3] ...
-```
-
-After `sa`:
-```
-A: head -> [2] <-> [1] <-> [3] ...
-```
-
-You only rearrange the first two nodes and re-link the third (if it exists).
-
-If `A.size < 2`, do nothing.
-
----
-
-### `ra` — rotate A up
-
-**Meaning:** top element goes to bottom.
-
-Before:
-```
-A: head -> [1] <-> [2] <-> [3] <- tail
-```
-
-After `ra`:
-```
-A: head -> [2] <-> [3] <-> [1] <- tail
-```
-
-**Conditions:**
-- If `A.size < 2`: do nothing.
-
-**Logic summary:**
-1. Take `first = head`
-2. Move `head` to `first->next`
-3. Append `first` at tail
-
-Critical pointer requirements after `ra`:
-- new `head->prev == NULL`
-- new `tail->next == NULL`
-
----
-
-### `rra` — reverse rotate A
-
-**Meaning:** bottom element goes to top.
-
-Before:
-```
-A: head -> [1] <-> [2] <-> [3] <- tail
-```
-
-After `rra`:
-```
-A: head -> [3] <-> [1] <-> [2] <- tail
-```
-
-**Conditions:**
-- If `A.size < 2`: do nothing.
-
-**Logic summary:**
-1. Take `last = tail`
-2. Move `tail` to `last->prev`
-3. Put `last` in front as new head
-
----
-
-## Visual Examples
-
-### Example: `ra` on 3 elements
-
-Initial:
-```
-head
- ↓
-[10] <-> [20] <-> [30]
-                     ↑
-                    tail
-```
-
-Apply `ra`:
-- Detach `[10]` from front
-- Attach `[10]` after `[30]`
-
-Result:
-```
-head
- ↓
-[20] <-> [30] <-> [10]
-                     ↑
-                    tail
+Goal:
+┌───┐  ┌───┐
+│ 1 │  │   │
+│ 2 │  │   │
+│ 3 │  │   │
+│ 5 │  │   │
+│ 6 │  │   │
+│ 8 │  │   │
+└───┘  └───┘
+  a      b
 ```
 
 ---
 
-### Example: `pa` when A already has elements
+## 🔧 Stack Operations
 
-Initial:
-```
-A: head -> [5] <-> [7] <-> [9]
-B: head -> [2] <-> [3]
-```
+You have **11 operations** at your disposal to manipulate the stacks:
 
-After `pa`:
-```
-A: head -> [2] <-> [5] <-> [7] <-> [9]
-B: head -> [3]
-```
+### Swap Operations
 
-Notice: You do **not** manually “shift” A’s values.
-Changing `head` pointers automatically shifts the stack logically.
+| Operation | Description |
+|-----------|-------------|
+| `sa` | **Swap a** - Swap the first 2 elements at the top of stack A. Do nothing if there is only one or no elements. |
+| `sb` | **Swap b** - Swap the first 2 elements at the top of stack B. Do nothing if there is only one or no elements. |
+| `ss` | **Swap both** - Execute `sa` and `sb` simultaneously. |
 
----
+### Push Operations
 
-## Common Mistakes (and Why They Break)
+| Operation | Description |
+|-----------|-------------|
+| `pa` | **Push to a** - Take the first element at the top of B and put it on top of A. Do nothing if B is empty. |
+| `pb` | **Push to b** - Take the first element at the top of A and put it on top of B. Do nothing if A is empty. |
 
-1. **Passing stacks by value**
-   - `do_pa(t_list a, t_list b)` modifies only copies → no real effect.
-   - Use pointers: `do_pa(t_list *a, t_list *b)`.
+### Rotate Operations
 
-2. **Copying values instead of moving nodes**
-   - Operations must move **nodes** to keep structure correct.
+| Operation | Description |
+|-----------|-------------|
+| `ra` | **Rotate a** - Shift all elements of stack A **up** by 1. The first element becomes the last. |
+| `rb` | **Rotate b** - Shift all elements of stack B **up** by 1. The first element becomes the last. |
+| `rr` | **Rotate both** - Execute `ra` and `rb` simultaneously. |
 
-3. **Forgetting to update `prev/next`**
-   - Especially: `head->prev` must be `NULL`
-   - and `tail->next` must be `NULL`
+### Reverse Rotate Operations
 
-4. **Not handling 0/1 element edge cases**
-   - `sa`, `ra`, `rra` must do nothing for `size < 2`
-   - `pa/pb` must do nothing if source stack is empty
-
-5. **Wrong free**
-   - Never free a node during `pa/pb/ra/...`
-   - Only free at program cleanup (or if you explicitly delete nodes, which you typically don’t in push_swap)
+| Operation | Description |
+|-----------|-------------|
+| `rra` | **Reverse rotate a** - Shift all elements of stack A **down** by 1. The last element becomes the first. |
+| `rrb` | **Reverse rotate b** - Shift all elements of stack B **down** by 1. The last element becomes the first. |
+| `rrr` | **Reverse rotate both** - Execute `rra` and `rrb` simultaneously. |
 
 ---
 
-## Memory Rules
+## 📊 Visual Examples
 
-- Nodes are allocated once during parsing / stack creation.
-- During operations (`sa`, `pa`, `ra`, ...), you **only change pointers**.
-- You free everything at the end:
+### Example 1: Swap Operation (`sa`)
 
-  - traverse from `head` using `next`
-  - free each node
-  - set `head = tail = NULL`, `size = 0`
+```
+Before sa:           After sa:
+┌───┐  ┌───┐        ┌───┐  ┌───┐
+│ 2 │  │   │        │ 1 │  │   │  ← Elements swapped
+│ 1 │  │   │        │ 2 │  │   │  ←
+│ 3 │  │   │        │ 3 │  │   │
+│ 6 │  │   │        │ 6 │  │   │
+│ 5 │  │   │        │ 5 │  │   │
+│ 8 │  │   │        │ 8 │  │   │
+└───┘  └───┘        └───┘  └───┘
+  a      b            a      b
+```
 
-If you use `ft_split`, remember:
-- you must free each token and the array.
+### Example 2: Push Operation (`pb`)
+
+```
+Before pb:           After pb:
+┌───┐  ┌───┐        ┌───┐  ┌───┐
+│ 2 │  │   │        │ 1 │  │ 2 │  ← Top of A moved to B
+│ 1 │  │   │        │ 3 │  │   │
+│ 3 │  │   │        │ 6 │  │   │
+│ 6 │  │   │        │ 5 │  │   │
+│ 5 │  │   │        │ 8 │  │   │
+│ 8 │  │   │        └───┘  └───┘
+└───┘  └───┘          a      b
+  a      b
+```
+
+### Example 3: Rotate Operation (`ra`)
+
+```
+Before ra:           After ra:
+┌───┐  ┌───┐        ┌───┐  ┌───┐
+│ 1 │  │   │        │ 2 │  │   │
+│ 2 │  │   │        │ 3 │  │   │
+│ 3 │  │   │        │ 1 │  │   │  ← First became last
+└───┘  └───┘        └───┘  └───┘
+  a      b            a      b
+```
+
+### Example 4: Reverse Rotate Operation (`rra`)
+
+```
+Before rra:          After rra:
+┌───┐  ┌───┐        ┌───┐  ┌───┐
+│ 1 │  │   │        │ 3 │  │   │  ← Last became first
+│ 2 │  │   │        │ 1 │  │   │
+│ 3 │  │   │        │ 2 │  │   │
+└───┘  └───┘        └───┘  └───┘
+  a      b            a      b
+```
+
+### Complete Sorting Example
+
+Let's sort `2 1 3 6 5 8` step by step:
+
+```
+┌─────────────────────────────────────────────┐
+│ Initial State                               │
+├─────────────────────────────────────────────┤
+│  a: [ 2  1  3  6  5  8 ]                   │
+│  b: [                  ]                    │
+└─────────────────────────────────────────────┘
+
+Execute: sa (swap first two in A)
+┌─────────────────────────────────────────────┐
+│  a: [ 1  2  3  6  5  8 ]                   │
+│  b: [                  ]                    │
+└─────────────────────────────────────────────┘
+
+Execute: pb pb pb (push 1, 2, 3 to B)
+┌─────────────────────────────────────────────┐
+│  a: [ 6  5  8 ]                             │
+│  b: [ 3  2  1 ]                             │
+└─────────────────────────────────────────────┘
+
+Execute: ra (rotate A)
+┌─────────────────────────────────────────────┐
+│  a: [ 5  8  6 ]                             │
+│  b: [ 3  2  1 ]                             │
+└─────────────────────────────────────────────┘
+
+Execute: rb (rotate B)
+┌─────────────────────────────────────────────┐
+│  a: [ 5  8  6 ]                             │
+│  b: [ 2  1  3 ]                             │
+└─────────────────────────────────────────────┘
+
+Execute: rra (reverse rotate A)
+┌─────────────────────────────────────────────┐
+│  a: [ 6  5  8 ]                             │
+│  b: [ 2  1  3 ]                             │
+└─────────────────────────────────────────────┘
+
+Execute: rrb (reverse rotate B)
+┌─────────────────────────────────────────────┐
+│  a: [ 6  5  8 ]                             │
+│  b: [ 3  2  1 ]                             │
+└─────────────────────────────────────────────┘
+
+Execute: sa (swap first two in A)
+┌─────────────────────────────────────────────┐
+│  a: [ 5  6  8 ]                             │
+│  b: [ 3  2  1 ]                             │
+└─────────────────────────────────────────────┘
+
+Execute: pa pa pa (push all from B to A)
+┌─────────────────────────────────────────────┐
+│  a: [ 1  2  3  5  6  8 ]  ✓ SORTED!        │
+│  b: [                  ]                    │
+└─────────────────────────────────────────────┘
+
+Total: 12 operations
+```
+
+**Can you do better?** This is the essence of the Push_Swap challenge!
 
 ---
 
-## Recommended File Layout
+## 💻 Program Specifications
 
-```
-includes/
-  push_swap.h
+### push_swap
 
-src/
-  main.c
-  parse/
-    parse_args.c
-    checks.c
-  stack/
-    stack_init.c
-    stack_append.c
-    stack_free.c
-  ops/
-    op_sa.c
-    op_pa.c
-    op_ra.c
-    op_rra.c
+**Program Name:** `push_swap`
+
+**Usage:**
+```bash
+./push_swap <list of integers>
 ```
 
-This keeps parsing, stack utilities, and operations separated and easier to debug.
+**Description:**
+
+The program takes a list of integers as arguments and outputs the **shortest sequence** of operations needed to sort stack A in ascending order.
+
+**Output:**
+- Each operation is printed on a new line
+- Operations must be separated by `\n` and nothing else
+- No output if no parameters are given
+- `Error\n` to stderr for invalid input
+
+**Error Cases:**
+- Arguments that are not integers
+- Arguments exceeding integer limits (`INT_MIN` to `INT_MAX`)
+- Duplicate numbers
+
+**Examples:**
+
+```bash
+$ ./push_swap 2 1 3 6 5 8
+sa
+pb
+pb
+pb
+sa
+pa
+pa
+pa
+
+$ ./push_swap 0 one 2 3
+Error
+
+$ ./push_swap
+$
+```
+
+**Testing with checker:**
+
+```bash
+$ ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
+6
+
+$ ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
+OK
+```
 
 ---
 
-## Notes
+## 📈 Performance Requirements
 
-If you want, you can extend this README later with:
-- duplicate detection strategy
-- indexing / normalization
-- sorting logic (small sort for 3/5, radix sort for large)
-- complexity notes
+Your sorting algorithm's efficiency is measured by the number of operations required:
+
+### For 100% Validation (and Bonus Eligibility)
+
+| Test Case | Maximum Operations |
+|-----------|-------------------|
+| 100 random numbers | < **700 operations** |
+| 500 random numbers | < **5500 operations** |
+
+### For 80% Validation (Minimum Pass)
+
+Different combinations are acceptable:
+
+| 100 Numbers | 500 Numbers | Result |
+|-------------|-------------|---------|
+| < 1100 ops  | < 8500 ops  | 80% |
+| < 700 ops   | < 11500 ops | 80% |
+| < 1300 ops  | < 5500 ops  | 80% |
+
+### Special Cases
+
+| Test Case | Requirement |
+|-----------|-------------|
+| 3 numbers | ≤ **3 operations** |
+| 5 numbers | ≤ **12 operations** |
+
+---
+
+## 🎁 Bonus: Checker Program
+
+The bonus part includes implementing your own **checker** program.
+
+**Program Name:** `checker`
+
+**Usage:**
+```bash
+./checker <list of integers>
+```
+
+**Description:**
+
+The checker reads operations from standard input and executes them on the given stack. After execution, it verifies if stack A is sorted.
+
+**Output:**
+- `OK\n` if stack A is sorted in ascending order and stack B is empty
+- `KO\n` if the stack is not sorted or B is not empty
+- `Error\n` to stderr for invalid input or operations
+
+**Examples:**
+
+```bash
+$ ./checker 3 2 1 0
+rra
+pb
+sa
+rra
+pa
+OK
+
+$ ./checker 3 2 1 0
+sa
+rra
+pb
+KO
+
+$ ./checker 3 2 one 0
+Error
+```
+
+**Integration Test:**
+
+```bash
+$ ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
+OK
+```
+
+---
+
+## 🚀 Instructions
+
+### Compilation
+
+```bash
+# Compile push_swap
+make
+
+# Compile with bonus (checker)
+make bonus
+
+# Clean object files
+make clean
+
+# Full clean
+make fclean
+
+# Recompile
+make re
+```
+
+### Usage
+
+**Basic usage:**
+```bash
+./push_swap 3 2 1 0 -42 789
+```
+
+**With single string argument:**
+```bash
+./push_swap "3 2 1 0 -42 789"
+```
+
+**Test efficiency:**
+```bash
+ARG=$(seq 1 100 | shuf); ./push_swap $ARG | wc -l
+```
+
+**Verify correctness:**
+```bash
+ARG=$(seq 1 100 | shuf); ./push_swap $ARG | ./checker $ARG
+```
+
+### Testing
+
+**Generate random numbers:**
+```bash
+# macOS
+ARG=$(jot -r 100 -2147483648 2147483647 | tr '\n' ' ')
+
+# Linux
+ARG=$(shuf -i -2147483648-2147483647 -n 100 | tr '\n' ' ')
+```
+
+**Test performance:**
+```bash
+# Test 100 numbers
+for i in {1..10}; do
+  ARG=$(seq 1 100 | shuf | tr '\n' ' ')
+  echo "Test $i: $(./push_swap $ARG | wc -l) operations"
+done
+```
+
+---
+
+## 📚 Resources
+
+### Official Documentation
+- [42 Push_Swap Subject (EN)](./en.subject.pdf)
+
+### Sorting Algorithms
+- [Sorting Algorithm Visualizations](https://www.toptal.com/developers/sorting-algorithms)
+- [Big-O Complexity Chart](https://www.bigocheatsheet.com/)
+- [Radix Sort Explained](https://en.wikipedia.org/wiki/Radix_sort)
+- [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort)
+
+### Algorithm Strategies
+- [Turk Algorithm for Push_Swap](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)
+- [Chunking Method](https://stackoverflow.com/questions/tagged/push-swap)
+
+### Testing Tools
+- [Push_Swap Visualizer](https://github.com/o-reo/push_swap_visualizer)
+- [Push_Swap Tester](https://github.com/lmalki-h/push_swap_tester)
+
+### Complexity Analysis
+- Time Complexity: Understanding O(n²), O(n log n), O(n)
+- Space Complexity: Stack memory management
+
+### AI Usage Disclosure
+
+AI tools were used in the following ways during this project:
+
+- **Documentation**: Formatting and structure of this README
+- **Research**: Understanding different sorting algorithm approaches
+- **Debugging**: Identifying edge cases and error scenarios
+- **Code Review**: Verifying logic and catching potential bugs
+
+All code implementation, algorithmic decisions, and core logic were developed independently. AI was used as a supplementary learning and productivity tool, with all generated content carefully reviewed and validated.
+
+---
+
+## 📝 Notes
+
+- The project must be written in **C**
+- Must comply with the **42 Norm**
+- No memory leaks tolerated
+- Proper error handling required
+- Global variables forbidden
+- Allowed external functions: `read`, `write`, `malloc`, `free`, `exit`
+- Your own `libft` is authorized
+
+---
+
+## 🎯 Key Takeaways
+
+This project teaches:
+
+1. **Algorithm Optimization** - Finding the most efficient solution
+2. **Complexity Analysis** - Understanding time and space trade-offs
+3. **Data Structure Manipulation** - Working with stacks and linked lists
+4. **Problem Decomposition** - Breaking complex problems into manageable parts
+5. **Edge Case Handling** - Robust input validation and error management
+
+---
+
+**Good luck sorting!** 🎲
+
