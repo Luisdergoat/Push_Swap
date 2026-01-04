@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 10:52:10 by lunsold           #+#    #+#             */
-/*   Updated: 2025/12/19 08:31:41 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/04 22:39:42 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+//includes
 # include <stdarg.h>
 # include <stddef.h>
 # include <stdio.h>
@@ -21,6 +22,7 @@
 # include <limits.h>
 # include "libft/libft.h"
 
+//linked list def
 typedef struct s_node
 {
 	int				value;
@@ -35,6 +37,7 @@ typedef struct s_list
 	int				size;
 }					t_list;
 
+//function prototypes
 int		push_swap(int argc, char **argv);
 void	list_def(t_list *a_list, t_list *b_list);
 t_node	*create_node(int value);

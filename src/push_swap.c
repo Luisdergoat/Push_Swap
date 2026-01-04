@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:35:05 by lunsold           #+#    #+#             */
-/*   Updated: 2025/12/19 08:28:56 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/04 22:01:28 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int main(int argc, char **argv)
 	t_list stack_b;
 
 	counter = 0;
-	if (argc == 1)
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return 0;
 	list_def(&stack_a, &stack_b);
 	if (argc == 2)

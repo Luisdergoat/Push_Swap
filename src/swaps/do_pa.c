@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help_swaps.c                                       :+:      :+:    :+:   */
+/*   do_pa.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/19 08:24:55 by lunsold           #+#    #+#             */
-/*   Updated: 2025/12/19 09:06:27 by lunsold          ###   ########.fr       */
+/*   Created: 2026/01/04 23:00:02 by lunsold           #+#    #+#             */
+/*   Updated: 2026/01/04 23:01:20 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "help_swaps.h"
+#include "swaps.h"
+
+void do_pa(t_list *stack_a, t_list *stack_b)
+{
+	t_node *swaper;
+	
+	if (stack_b->size == 0)
+		return ;
+	swaper = stack_b->head;
+	more_help_pa(stack_b, swaper);
+	help_pa(stack_a, swaper);
+	write(1, "pa\n", 3);
+}
 
 void help_pa(t_list *stack_a, t_node *swaper)
 {
@@ -49,43 +61,4 @@ void more_help_pa(t_list *stack_b, t_node *swaper)
 	}
 	if (stack_b->size == 0)
 		stack_b->tail = NULL;
-}
-
-void help_pb(t_list *stack_b, t_node *swaper)
-{
-	swaper->prev = NULL;
-	swaper->next = stack_b->head;
-	if (stack_b->size != 0)
-	{
-		stack_b->head->prev = swaper;
-		stack_b->head = swaper;
-		stack_b->head->prev = NULL;
-	}
-	else
-	{
-		stack_b->tail = swaper;
-		stack_b->head = swaper;
-		stack_b->head->prev = NULL;
-		stack_b->tail->next = NULL;
-	}
-	stack_b->size++;
-}
-
-void more_help_pb(t_list *stack_a, t_node *swaper)
-{
-	if (stack_a->size == 1)
-	{
-		stack_a->head = NULL;
-		stack_a->tail = NULL;
-		stack_a->size--;
-	}
-	else
-	{
-		stack_a->head = swaper->next;
-		swaper->next = NULL;
-		stack_a->head->prev = NULL;
-		stack_a->size--;
-	}
-	if (stack_a->size == 0)
-		stack_a->tail = NULL;
 }
