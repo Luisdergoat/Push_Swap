@@ -6,7 +6,7 @@
 /*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 10:52:10 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/04 22:39:42 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/06 23:18:02 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 # define PUSH_SWAP_H
 
 //includes
+# include "libft/libft.h"
+# include "algo.h"
+# include "swaps.h"
+
+//library includes
+# include <stdlib.h>
 # include <stdarg.h>
 # include <stddef.h>
 # include <stdio.h>
-# include <stdlib.h>
+# include <stdbool.h>
 # include <unistd.h>
 # include <limits.h>
-# include "libft/libft.h"
 
 //linked list def
 typedef struct s_node
