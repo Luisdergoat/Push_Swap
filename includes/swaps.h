@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swaps.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 07:20:52 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/04 23:05:37 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/08 22:25:24 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,8 @@
 
 //includes
 # include "push_swap.h"
-# include <stdlib.h>
-# include <stdarg.h>
-# include <stddef.h>
-# include <stdio.h>
-# include <stdbool.h>
-# include <unistd.h>
-# include <limits.h>
 # include "libft/libft.h"
+# include "algo.h"
 
 //function prototypes
 void	do_sa(t_list *stack_a);
