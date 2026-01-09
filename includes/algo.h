@@ -6,7 +6,7 @@
 /*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 23:16:26 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/08 23:54:03 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/09 01:55:35 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ int check_options(int cost_ra,int cost_rb,int cost_rra, int cost_rrb);
 int options_check(int cost_ra, int cost_rb, int cost_rra, int cost_rrb, int opt);
 void def_result(t_cost result, int cost_a, int cost_b, bool set, int option);
 t_cost calculate_r_rr(t_list *st_a, t_list *st_b, int tar_a, int ind_b, int tmp);
+int find_min_index(t_list *stack_a);
+
 
 #endif
