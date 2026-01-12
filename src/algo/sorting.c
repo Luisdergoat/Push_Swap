@@ -51,11 +51,11 @@ t_cost	calculate_cost(t_list *stack_a, t_list *stack_b, t_node *element)
 void sort(t_list *stack_a, t_list *stack_b)
 {
 	t_cost cheapest;
-	
+
 	while (stack_b->size > 0)
 	{
 		cheapest = find_cheapest_move(stack_a, stack_b);
-		if (cheapest.use_rr &&cheapest.moves_a == 0 && cheapest.moves_b == 0)
+		if (cheapest.moves_a == 0 && cheapest.moves_b == 0)
 			do_pa(stack_a, stack_b);
 		else
 		{

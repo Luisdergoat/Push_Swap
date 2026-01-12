@@ -6,7 +6,7 @@
 /*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:35:05 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 15:54:24 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 16:51:40 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ int main(int argc, char **argv)
 	if (need_free)
 		free_split(args);
 	if (is_sorted(&stack_a))
+	{
+		free_stack(&stack_a);
+		return (0);
+	}
+	if (stack_a.size == 0)
 	{
 		free_stack(&stack_a);
 		return (0);

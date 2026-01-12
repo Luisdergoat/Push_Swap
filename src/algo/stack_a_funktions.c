@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 # include "algo.h"
+# include <stdio.h>
 
 void help_sort_three(t_list *stack_a)
 {	
@@ -65,20 +66,31 @@ void fastest_rotate(t_list *stack_a)
 	int size;
 	int cost_forward;
 	int cost_reverse;
+	int rotations;
 
 	min_index = find_min_index(stack_a);
+	if (min_index == 0)
+		return;
 	size = stack_a->size;
 	cost_forward = min_index;
 	cost_reverse = size - min_index;
 	if (cost_forward <= cost_reverse)
 	{
-		while (min_index-- > 0)
+		rotations = 0;
+		while (rotations < min_index)
+		{
 			do_ra(stack_a);
+			rotations++;
+		}
 	}
 	else
 	{
-		while (cost_reverse-- > 0)
+		rotations = 0;
+		while (rotations < cost_reverse)
+		{
 			do_rra(stack_a);
+			rotations++;
+		}
 	}
 }
 
