@@ -6,7 +6,7 @@
 /*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:35:05 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:34:36 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 15:54:24 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ int main(int argc, char **argv)
 	t_list stack_a;
 	t_list stack_b;
 	char **args;
-	int i;
 	bool need_free;
 
 	if (argc < 2)
 		return (0);
 	list_def(&stack_a, &stack_b);
 	need_free = false;
-	if (argc = 2)
+	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
 		need_free = true;
@@ -39,20 +38,20 @@ int main(int argc, char **argv)
 	if (! parse_and_validate(&stack_a, args))
 	{
 		if (need_free)
-			free_splitt(args);
+			free_split(args);
 		free_stack(&stack_a);
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
 	if (need_free)
-		free_splitt(args);
+		free_split(args);
 	if (is_sorted(&stack_a))
 	{
 		free_stack(&stack_a);
 		return (0);
 	}
 	if (stack_a.size == 2)
-		sort_two(stack_a);
+		sort_two(&stack_a);
 	else if (stack_a.size == 3)
 		help_sort_three(&stack_a);
 	else

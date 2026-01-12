@@ -6,16 +6,20 @@
 /*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 23:16:26 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:37:41 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 16:12:39 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ALGO_H
 # define ALGO_H
 
+// Forward declarations
+typedef struct s_node t_node;
+typedef struct s_list t_list;
+
 //includes
 # include "push_swap.h"
-# include "libft/libft.h"
+# include "libft.h"
 # include "swaps.h"
 # include <stdbool.h>
 
@@ -46,7 +50,7 @@ void sort_two(t_list *stack_a);
 int		get_index(t_list *stack_b, t_node *element);
 t_cost	calculate_r_rr(t_list *st_a, t_list *st_b, int tar_a, int ind_b, int tmp);
 int		minook(int cost_a, int cost_b);
-t_cost	def_result(t_cost result, int cost_a, int cost_b, bool set, int option);
+t_cost	def_result(t_cost result, int cost_a, int cost_b, int option);
 t_cost	rotate_stacks(t_list *stack_a, t_list *stack_b, t_cost cheapest);
 t_cost	exe(t_list *stack_a, t_list *stack_b, t_cost cheapest, int version);
 int		find_target_in_a(t_list *stack_a, int value);

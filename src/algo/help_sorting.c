@@ -6,7 +6,7 @@
 /*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 23:47:41 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:35:16 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 16:12:55 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int minook(int cost_a, int cost_b)
 	return (cost_a);
 }
 
-t_cost def_result(t_cost result, int cost_a, int cost_b, bool set, int option)
+t_cost def_result(t_cost result, int cost_a, int cost_b, int option)
 {
 	result.moves_a = cost_a;
 	result.moves_b = cost_b;
@@ -65,14 +65,5 @@ t_cost def_result(t_cost result, int cost_a, int cost_b, bool set, int option)
 		result = def_bool(result, false, false, false, true);
 	if (option == 4)
 		result = def_bool(result, false, true, false, false);
-	return (result);
-}
-
-t_cost def_bool(t_cost result, bool u_rr, bool u_rrr, bool dir_a, bool dir_b)
-{
-	result.use_rr = u_rr;
-	result.use_rrr = u_rrr;
-	result.dir_a_forward = dir_a;
-	result.dir_b_forward = dir_b;
 	return (result);
 }

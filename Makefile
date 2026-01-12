@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/12/06 10:52:05 by lunsold           #+#    #+#              #
-#    Updated: 2026/01/12 13:47:44 by lunsold          ###   ########.fr        #
+#    Created: 2026/01/12 14:34:58 by lunsold           #+#    #+#              #
+#    Updated: 2026/01/12 16:22:53 by lunsold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,52 +14,47 @@ NAME = push_swap
 CC = cc
 RM = rm -rf
 
-
 ################################################################################
-#####################            Directories            ########################
+###############                  DIRECTORIES                      ##############
 ################################################################################
-
 
 OBJ_DIR = _obj
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-INC_DIR := includes $(LIBFT_DIR)
-SRC_DIR := src src/algo src/swaps src/parser
+INC_DIRS := Includes $(LIBFT_DIR)
+SRC_DIRS := src src/parser src/swaps src/algo
 HEADERS = -I $(LIBFT_DIR)/include -I
 
-
-vpath %.h, $(INC_DIR)
-vpath %.c, $(SRC_DIR)
+vpath %.h $(INC_DIRS)
+vpath %.c $(SRC_DIRS)
 
 ################################################################################
-#####################            Source Files           ########################
+###############                  SOURCE FILES                     ##############
 ################################################################################
-
-ALGO_FILES := sorting.c help_sorting. c check_funktions.c stack_a_funktions.c rotation.c
-ALGO := $(addprefix algo/, $(ALGO_FILES))
-	
-SWAPS_FILES := do_rr.c do_pa.c do_rb.c do_ra.c do_ss.c do_sa.c do_rrr.c do_pb.c do_rrb.c do_rra.c
-SWAPS := $(addprefix swaps/, $(SWAPS_FILES))
 
 PARSING_FILES := input_check.c parser.c free_funktions.c define.c fill_stack.c
 PARSING := $(addprefix parser/, $(PARSING_FILES))
 
+SWAPS_FILES := do_rr.c do_pa.c do_rb.c do_ra.c do_ss.c do_sa.c do_sb.c do_rrr.c do_pb.c do_rrb.c do_rra.c
+SWAPS := $(addprefix swaps/, $(SWAPS_FILES))
+
+ALGO_FILES := sorting.c help_sorting.c check_funktions.c stack_a_funktions.c rotation.c
+ALGO := $(addprefix algo/, $(ALGO_FILES))
+
 SRC_FILES := main.c
-SRC := $(addprefix src/, $(SRC_FILES) $(ALGO) $(PARSING) $(SWAPS))
-
+SRC := $(addprefix src/, $(SRC_FILES) $(PARSING) $(SWAPS) $(ALGO))
 
 ################################################################################
-###################            Object Files & rules        #####################
+###############               OBJECT FILES & RULES                ##############
 ################################################################################
 
-OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
+OBJS := $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
-#compilation flags and linking options
-CFLAGS := -Wall -Wextra -Werror -g -Iincludes -Ilibft -MMD -MP $(addprefix -I, $(INC_DIRS))
+# Compilation flags and linking options
+CFLAGS := -Wall -Wextra -Werror -g -IIncludes -Ilibft -MMD -MP $(addprefix -I, $(INC_DIRS))
 LDFLAGS := -Llibft -lft
 CFLAGS_SAN := $(CFLAGS) -fsanitize=address -g
 LDFLAGS_SAN := $(LDFLAGS) -fsanitize=address
-
 
 all: $(NAME)
 
@@ -106,6 +101,6 @@ test: all
 	ARG="956 187 188 896"; ./push_swap $$ARG | $(CHECKER) $$ARG
 
 test_rand: all
-	ARG_RAND=$$(jot -r 36 10000000 99999999) && ./push_swap $$ARG_RAND | ./checker_Mac $$ARG_RAND
+	ARG_RAND=$$(jot -r 36 10000000 99999999) && ./push_swap $$ARG_RAND | ./checker_linux $$ARG_RAND
 
 .PHONY: all clean fclean re test test_rand
