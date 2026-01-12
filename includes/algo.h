@@ -48,7 +48,7 @@ void sort_two(t_list *stack_a);
 
 //help functions
 int		get_index(t_list *stack_b, t_node *element);
-t_cost	calculate_r_rr(t_list *st_a, t_list *st_b, int tar_a, int ind_b, int tmp);
+t_cost	calculate_r_rr(t_list *a, t_list *b, int ta, int ib, int tmp);
 int		minook(int cost_a, int cost_b);
 t_cost	def_result(t_cost result, int cost_a, int cost_b, int option);
 t_cost	rotate_stacks(t_list *stack_a, t_list *stack_b, t_cost cheapest);
@@ -57,8 +57,8 @@ int		find_target_in_a(t_list *stack_a, int value);
 void	help_sort_three(t_list *stack_a);
 int		find_min_index(t_list *stack_a);
 void	fastest_rotate(t_list *stack_a);
-t_cost	res_check(int cost_ra, int cost_rb, int cost_rra, int cost_rrb, int min);
-int		check_options(int cost_ra, int cost_rb, int cost_rra, int cost_rrb);
-int		options_check(int cost_ra, int cost_rb, int cost_rra, int cost_rrb, int opt);
+t_cost	res_check(int ra, int rb, int rra, int rrb, int min);
+int		check_options(int ra, int rb, int rra, int rrb);
+int		options_check(int ra, int rb, int rra, int rrb, int opt);
 
 #endif

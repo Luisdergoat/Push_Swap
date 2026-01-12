@@ -6,25 +6,24 @@
 /*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 02:29:36 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:35:30 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:11:28 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "algo.h"
-# include <stdio.h>
 
-void help_sort_three(t_list *stack_a)
-{	
-	int first;
-	int second;
-	int third;
-	int max;
+void	help_sort_three(t_list *stack_a)
+{
+	int	first;
+	int	second;
+	int	third;
+	int	max;
 
 	first = stack_a->head->value;
 	second = stack_a->head->next->value;
 	third = stack_a->tail->value;
 	max = first;
-	if(second > max)
+	if (second > max)
 		max = second;
 	if (third > max)
 		max = third;
@@ -33,15 +32,15 @@ void help_sort_three(t_list *stack_a)
 	else if (second == max)
 		do_rra(stack_a);
 	if (stack_a->head->value > stack_a->head->next->value)
-        do_sa(stack_a);
+		do_sa(stack_a);
 }
 
-int find_min_index(t_list *stack_a)
+int	find_min_index(t_list *stack_a)
 {
-	t_node *current;
-	int min_value;
-	int min_index;
-	int index;
+	t_node	*current;
+	int		min_value;
+	int		min_index;
+	int		index;
 
 	min_index = 0;
 	index = 0;
@@ -88,12 +87,12 @@ void	fastest_rotate(t_list *stack_a)
 	}
 }
 
-int find_target_in_a(t_list *stack_a, int value)
+int	find_target_in_a(t_list *stack_a, int value)
 {
-	t_node *current;
-	int index;
-	int best_value;
-	int best_index;
+	t_node	*current;
+	int		index;
+	int		best_value;
+	int		best_index;
 
 	current = stack_a->head;
 	best_index = 0;

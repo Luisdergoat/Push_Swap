@@ -12,61 +12,61 @@
 
 # include "algo.h"
 
-int	check_options(int cost_ra, int cost_rb, int cost_rra, int cost_rrb)
+int	check_options(int ra, int rb, int rra, int rrb)
 {
-	int option1;
-	int option2;
-	int option3;
-	int option4;
-	int min_cost;
+	int	option1;
+	int	option2;
+	int	option3;
+	int	option4;
+	int	min_cost;
 
-	option1 = cost_ra + cost_rb -minook(cost_ra, cost_rb);
-	option2 = cost_ra + cost_rrb;
-	option3 = cost_rra + cost_rb;
-	option4 = cost_rra + cost_rrb - minook(cost_rra, cost_rrb);
-	min_cost = minook (minook(option1, option2), minook(option3, option4));
+	option1 = ra + rb - minook(ra, rb);
+	option2 = ra + rrb;
+	option3 = rra + rb;
+	option4 = rra + rrb - minook(rra, rrb);
+	min_cost = minook(minook(option1, option2), minook(option3, option4));
 	return (min_cost);
-	
 }
 
-int options_check(int cost_ra, int cost_rb, int cost_rra, int cost_rrb, int opt)
+int	options_check(int ra, int rb, int rra, int rrb, int opt)
 {
-	int res;
+	int	res;
 
 	if (opt == 1)
 	{
-		res = cost_ra + cost_rb - minook(cost_ra, cost_rb);
+		res = ra + rb - minook(ra, rb);
 		return (res);
 	}
 	if (opt == 2)
 	{
-		res = cost_ra + cost_rrb;
+		res = ra + rrb;
 		return (res);
 	}
 	if (opt == 3)
 	{
-		res = cost_rra + cost_rb;
+		res = rra + rb;
 		return (res);
 	}
 	if (opt == 4)
 	{
-		res = cost_rra + cost_rrb - minook(cost_rra, cost_rrb);
+		res = rra + rrb - minook(rra, rrb);
 		return (res);
 	}
 	return (-1);
 }
 
-t_cost res_check(int cost_ra, int cost_rb, int cost_rra, int cost_rrb, int min)
+t_cost	res_check(int ra, int rb, int rra, int rrb, int min)
 {
-	t_cost result;
+	t_cost	result;
+
 	result.total_cost = min;
-	if (min == options_check(cost_ra, cost_rb, cost_rra, cost_rrb, 1))
-		result = def_result(result, cost_ra, cost_rb, 1);
-	else if (min == options_check(cost_ra, cost_rb, cost_rra, cost_rrb, 2))
-		result = def_result(result, cost_ra, cost_rrb, 2);
-	else if (min == options_check(cost_ra, cost_rb, cost_rra, cost_rrb, 3))
-		result = def_result(result, cost_rra, cost_rb, 3);
-	else if (min == options_check(cost_ra, cost_rb, cost_rra, cost_rrb, 4))
-		result = def_result(result, cost_rra, cost_rrb, 4);
+	if (min == options_check(ra, rb, rra, rrb, 1))
+		result = def_result(result, ra, rb, 1);
+	else if (min == options_check(ra, rb, rra, rrb, 2))
+		result = def_result(result, ra, rrb, 2);
+	else if (min == options_check(ra, rb, rra, rrb, 3))
+		result = def_result(result, rra, rb, 3);
+	else if (min == options_check(ra, rb, rra, rrb, 4))
+		result = def_result(result, rra, rrb, 4);
 	return (result);
 }

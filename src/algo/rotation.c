@@ -12,7 +12,7 @@
 
 # include "algo.h"
 
-t_cost rotate_stacks(t_list *stack_a, t_list *stack_b, t_cost cheapest)
+t_cost	rotate_stacks(t_list *stack_a, t_list *stack_b, t_cost cheapest)
 {
 	while (cheapest.use_rr && cheapest.moves_a > 0 && cheapest.moves_b > 0)
 		cheapest = exe(stack_a, stack_b, cheapest, 1);
@@ -35,7 +35,7 @@ t_cost rotate_stacks(t_list *stack_a, t_list *stack_b, t_cost cheapest)
 	return (cheapest);
 }
 
-t_cost exe(t_list *stack_a, t_list *stack_b, t_cost cheapest, int version)
+t_cost	exe(t_list *stack_a, t_list *stack_b, t_cost cheapest, int version)
 {
 	if (version == 1)
 	{
@@ -59,6 +59,5 @@ t_cost exe(t_list *stack_a, t_list *stack_b, t_cost cheapest, int version)
 		do_rra(stack_a);
 		cheapest.moves_a--;
 	}
-	
 	return (cheapest);
 }

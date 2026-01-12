@@ -12,10 +12,10 @@
 
 # include "algo.h"
 
-int get_index(t_list *stack_b, t_node *element)
+int	get_index(t_list *stack_b, t_node *element)
 {
-	t_node *current;
-	int counter;
+	t_node	*current;
+	int		counter;
 
 	current = stack_b->head;
 	counter = 0;
@@ -29,31 +29,31 @@ int get_index(t_list *stack_b, t_node *element)
 	return (-1);
 }
 
-t_cost calculate_r_rr(t_list *st_a, t_list *st_b, int tar_a, int ind_b, int tmp)
+t_cost	calculate_r_rr(t_list *a, t_list *b, int ta, int ib, int tmp)
 {
-	int cost_ra;
-	int cost_rra;
-	int cost_rb;
-	int cost_rrb;
-	t_cost result;
+	int		cost_ra;
+	int		cost_rra;
+	int		cost_rb;
+	int		cost_rrb;
+	t_cost	result;
 
-	cost_ra = tar_a;
-	cost_rra = st_a->size - tar_a;
-	cost_rb = ind_b;
-	cost_rrb = st_b->size - ind_b;
+	cost_ra = ta;
+	cost_rra = a->size - ta;
+	cost_rb = ib;
+	cost_rrb = b->size - ib;
 	tmp = check_options(cost_ra, cost_rb, cost_rra, cost_rrb);
 	result = res_check(cost_ra, cost_rb, cost_rra, cost_rrb, tmp);
 	return (result);
 }
 
-int minook(int cost_a, int cost_b)
+int	minook(int cost_a, int cost_b)
 {
 	if (cost_a > cost_b)
 		return (cost_b);
 	return (cost_a);
 }
 
-t_cost def_result(t_cost result, int cost_a, int cost_b, int option)
+t_cost	def_result(t_cost result, int cost_a, int cost_b, int option)
 {
 	result.moves_a = cost_a;
 	result.moves_b = cost_b;
