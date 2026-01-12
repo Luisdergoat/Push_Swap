@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   help_sorting.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 23:47:41 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/09 02:51:58 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 13:35:16 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "algo.h"
+# include "algo.h"
 
 int get_index(t_list *stack_b, t_node *element)
 {

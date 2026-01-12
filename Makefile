@@ -6,7 +6,7 @@
 #    By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/06 10:52:05 by lunsold           #+#    #+#              #
-#    Updated: 2026/01/12 12:20:11 by lunsold          ###   ########.fr        #
+#    Updated: 2026/01/12 13:47:44 by lunsold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,43 +20,42 @@ RM = rm -rf
 ################################################################################
 
 
-OBJS_DIR = _obj
+OBJ_DIR = _obj
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 INC_DIR := includes $(LIBFT_DIR)
 SRC_DIR := src src/algo src/swaps src/parser
-HEADERS = -I $(LIBFT_DIR)/includes
+HEADERS = -I $(LIBFT_DIR)/include -I
 
 
-vpath %.c, $(SRC_DIR)
 vpath %.h, $(INC_DIR)
+vpath %.c, $(SRC_DIR)
 
 ################################################################################
 #####################            Source Files           ########################
 ################################################################################
 
-ALGO_FILES := sorting.c help_sorting.c
-ALGO := $(addprefix $(SRC_DIR)/algo/, $(ALGO_FILES))
-
-swaps_FILES := do_rr.c do_pa.c do_rb.c do_ra.c do_ss.c \
-do_sa.c do_rrr.c do_pb.c do_rrb.c do_rra.c
-swaps := $(addprefix $(SRC_DIR)/swaps/, $(swaps_FILES))
+ALGO_FILES := sorting.c help_sorting. c check_funktions.c stack_a_funktions.c rotation.c
+ALGO := $(addprefix algo/, $(ALGO_FILES))
+	
+SWAPS_FILES := do_rr.c do_pa.c do_rb.c do_ra.c do_ss.c do_sa.c do_rrr.c do_pb.c do_rrb.c do_rra.c
+SWAPS := $(addprefix swaps/, $(SWAPS_FILES))
 
 PARSING_FILES := input_check.c parser.c free_funktions.c define.c fill_stack.c
-PARSING := $(addprefix $(SRC_DIR)/parser/, $(PARSING_FILES))
+PARSING := $(addprefix parser/, $(PARSING_FILES))
 
 SRC_FILES := main.c
-SRC := $(addprefix src/, $(SRC_FILES) $(ALGO) $(PARSING) $(swaps))
+SRC := $(addprefix src/, $(SRC_FILES) $(ALGO) $(PARSING) $(SWAPS))
 
 
 ################################################################################
 ###################            Object Files & rules        #####################
 ################################################################################
 
-OBJS = $(addprefix $(OBJS_DIR)/, $(SRC:%.c=%.o))
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
 #compilation flags and linking options
-CFLAGS := -Wall -Wextra -Werror -g -IIncludes -Ilibft -MMD -MP $(addprefix -I, $(INC_DIRS))
+CFLAGS := -Wall -Wextra -Werror -g -Iincludes -Ilibft -MMD -MP $(addprefix -I, $(INC_DIRS))
 LDFLAGS := -Llibft -lft
 CFLAGS_SAN := $(CFLAGS) -fsanitize=address -g
 LDFLAGS_SAN := $(LDFLAGS) -fsanitize=address

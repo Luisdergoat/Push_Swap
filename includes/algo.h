@@ -6,7 +6,7 @@
 /*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 23:16:26 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 11:59:14 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 13:37:41 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ int		find_target_in_a(t_list *stack_a, int value);
 void	help_sort_three(t_list *stack_a);
 int		find_min_index(t_list *stack_a);
 void	fastest_rotate(t_list *stack_a);
+t_cost	res_check(int cost_ra, int cost_rb, int cost_rra, int cost_rrb, int min);
+int		check_options(int cost_ra, int cost_rb, int cost_rra, int cost_rrb);
+int		options_check(int cost_ra, int cost_rb, int cost_rra, int cost_rrb, int opt);
 
 #endif

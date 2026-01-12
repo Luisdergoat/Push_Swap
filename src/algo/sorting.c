@@ -6,11 +6,11 @@
 /*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 23:00:48 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 11:58:31 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 13:35:24 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "algo.h"
+# include "algo.h"
 
 void start_sort(t_list *stack_a, t_list *stack_b)
 {
@@ -72,5 +72,5 @@ void sort(t_list *stack_a, t_list *stack_b)
 void sort_two(t_list *stack_a)
 {
 	if (stack_a->head->value > stack_a->head->next->value)
-		do_sa;
+		do_sa(stack_a);
 }
