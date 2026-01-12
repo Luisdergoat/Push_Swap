@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_funktions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 02:47:22 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 16:14:28 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:30:59 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "algo.h"
+#include "algo.h"
 
 int	check_options(int ra, int rb, int rra, int rrb)
 {

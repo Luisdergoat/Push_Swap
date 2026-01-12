@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   do_sb.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 23:03:28 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:34:27 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:38:29 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swaps.h"
 
-void do_sb(t_list *stack_b)
+void	do_sb(t_list *stack_b)
 {
-	t_node *first;
-	t_node *second;
-	int temp;
+	t_node	*first;
+	t_node	*second;
+	int		temp;
 
 	if (stack_b->size < 2)
 		return ;

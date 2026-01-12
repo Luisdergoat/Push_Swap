@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 02:56:55 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 16:09:34 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:31:40 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void list_def(t_list *a_list, t_list *b_list)
 	b_list->size = 0;
 }
 
-t_cost def_bool(t_cost result, bool u_rr, bool u_rrr, bool dir_a, bool dir_b)
+t_cost	def_bool(t_cost result, bool u_rr, bool u_rrr, bool dir_a, bool dir_b)
 {
 	result.use_rr = u_rr;
 	result.use_rrr = u_rrr;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swaps.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 07:20:52 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 16:11:56 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:38:58 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define SWAPS_H
 
 // Forward declarations 
-typedef struct s_node t_node;
-typedef struct s_list t_list;
-typedef struct s_cost t_cost;
+typedef struct s_node	t_node;
+typedef struct s_list	t_list;
+typedef struct s_cost	t_cost;
 
 //includes
 # include "push_swap.h"

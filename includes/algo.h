@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 23:16:26 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 16:12:39 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:29:48 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 # define ALGO_H
 
 // Forward declarations
-typedef struct s_node t_node;
-typedef struct s_list t_list;
+typedef struct s_node	t_node;
+typedef struct s_list	t_list;
 
 //includes
-# include "push_swap.h"
-# include "libft.h"
-# include "swaps.h"
-# include <stdbool.h>
+#include "push_swap.h"
+#include "libft.h"
+#include "swaps.h"
+#include <stdbool.h>
 
 //linked list def
 typedef struct s_cost
 {
-	t_node  *element;
-	int     value;
-	int     index_b;
-	int     target_a;
-	int     moves_a;
-	int     moves_b;
-	int     total_cost;
-	bool    use_rr;
-	bool    use_rrr;
-	bool    dir_a_forward;
-	bool    dir_b_forward;
+	t_node	*element;
+	int		value;
+	int		index_b;
+	int		target_a;
+	int		moves_a;
+	int		moves_b;
+	int		total_cost;
+	bool	use_rr;
+	bool	use_rrr;
+	bool	dir_a_forward;
+	bool	dir_b_forward;
 }					t_cost;
 
 //function prototypes
@@ -44,7 +44,7 @@ void	start_sort(t_list *stack_a, t_list *stack_b);
 t_cost	find_cheapest_move(t_list *stack_a, t_list *stack_b);
 t_cost	calculate_cost(t_list *stack_a, t_list *stack_b, t_node *element);
 void	sort(t_list *stack_a, t_list *stack_b);
-void sort_two(t_list *stack_a);
+void	sort_two(t_list *stack_a);
 
 //help functions
 int		get_index(t_list *stack_b, t_node *element);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 23:00:48 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 18:07:31 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:31:17 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "algo.h"
+#include "algo.h"
 
 void	start_sort(t_list *stack_a, t_list *stack_b)
 {

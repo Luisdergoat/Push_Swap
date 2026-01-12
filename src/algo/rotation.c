@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 02:32:10 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:35:20 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:31:11 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "algo.h"
+#include "algo.h"
 
 t_cost	rotate_stacks(t_list *stack_a, t_list *stack_b, t_cost cheapest)
 {

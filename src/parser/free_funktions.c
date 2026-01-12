@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   free_funktions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 11:56:50 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:34:53 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:32:24 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void free_split(char **split)
+void	free_split(char **split)
 {
-	int i;
+	int	i;
+
 	if (!split)
 		return ;
 	i = 0;
@@ -26,10 +27,10 @@ void free_split(char **split)
 	free(split);
 }
 
-void free_stack(t_list *stack)
+void	free_stack(t_list *stack)
 {
-	t_node *current;
-	t_node *next;
+	t_node	*current;
+	t_node	*next;
 
 	current = stack->head;
 	while (current)

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_a_funktions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 02:29:36 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 18:11:28 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:31:25 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "algo.h"
+#include "algo.h"
 
 void	help_sort_three(t_list *stack_a)
 {

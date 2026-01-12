@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   do_rrb.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 22:54:10 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:34:14 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:38:14 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swaps.h"
 
-void do_rrb(t_list *stack_b)
+void	do_rrb(t_list *stack_b)
 {
-	t_node *shifter;
+	t_node	*shifter;
+
 	if (stack_b->size < 2)
 		return ;
 	shifter = stack_b->tail;

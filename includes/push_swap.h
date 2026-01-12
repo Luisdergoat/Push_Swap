@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 10:52:10 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 16:12:14 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:38:51 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // Forward declarations
 
-typedef struct s_cost t_cost;
+typedef struct s_cost	t_cost;
 
 //includes
 # include "libft.h"

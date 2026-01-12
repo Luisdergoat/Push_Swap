@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_pb.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 22:57:46 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:33:54 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:37:14 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	do_pb(t_list *stack_a, t_list *stack_b)
 {
-		t_node *swaper;
-	
+	t_node	*swaper;
+
 	if (stack_a->size == 0)
 		return ;
 	swaper = stack_a->head;
@@ -24,7 +24,7 @@ void	do_pb(t_list *stack_a, t_list *stack_b)
 	write(1, "pb\n", 3);
 }
 
-void help_pb(t_list *stack_b, t_node *swaper)
+void	help_pb(t_list *stack_b, t_node *swaper)
 {
 	swaper->prev = NULL;
 	swaper->next = stack_b->head;
@@ -44,7 +44,7 @@ void help_pb(t_list *stack_b, t_node *swaper)
 	stack_b->size++;
 }
 
-void more_help_pb(t_list *stack_a, t_node *swaper)
+void	more_help_pb(t_list *stack_a, t_node *swaper)
 {
 	if (stack_a->size == 1)
 	{

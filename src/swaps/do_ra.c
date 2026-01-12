@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   do_ra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 22:56:42 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:33:58 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:37:20 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swaps.h"
 
-void do_ra(t_list *stack_a)
+void	do_ra(t_list *stack_a)
 {
-	t_node *shifter;
+	t_node	*shifter;
 
 	if (stack_a->size < 2)
 		return ;

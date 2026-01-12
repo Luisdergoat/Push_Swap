@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   do_pa.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 23:00:02 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:33:49 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:36:48 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swaps.h"
 
-void do_pa(t_list *stack_a, t_list *stack_b)
+void	do_pa(t_list *stack_a, t_list *stack_b)
 {
-	t_node *swaper;
-	
+	t_node	*swaper;
+
 	if (stack_b->size == 0)
 		return ;
 	swaper = stack_b->head;
@@ -24,7 +24,7 @@ void do_pa(t_list *stack_a, t_list *stack_b)
 	write(1, "pa\n", 3);
 }
 
-void help_pa(t_list *stack_a, t_node *swaper)
+void	help_pa(t_list *stack_a, t_node *swaper)
 {
 	swaper->prev = NULL;
 	swaper->next = stack_a->head;
@@ -44,7 +44,7 @@ void help_pa(t_list *stack_a, t_node *swaper)
 	stack_a->size++;
 }
 
-void more_help_pa(t_list *stack_b, t_node *swaper)
+void	more_help_pa(t_list *stack_b, t_node *swaper)
 {
 	if (stack_b->size == 1)
 	{

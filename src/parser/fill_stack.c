@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 02:55:03 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:34:48 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:31:54 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	add_node_to_stack(t_list *list, int value)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	new_node = create_node(value);
 	if (!new_node)
@@ -24,7 +24,7 @@ void	add_node_to_stack(t_list *list, int value)
 
 t_node	*create_node(int value)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)

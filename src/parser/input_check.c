@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 02:58:18 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 13:34:58 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:35:50 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,32 @@ int fits_in_int(const char *str)
 	}
 	while (*str)
 	{
-		  n = n * 10 + (*str - '0');
-        if (sign == 1 && n > 2147483647LL)
-            return 0;
-        if (sign == -1 && -n < -2147483648LL)
-            return 0;
-        str++;
+		n = n * 10 + (*str - '0');
+		if (sign == 1 && n > 2147483647LL)
+			return (0);
+		if (sign == -1 && -n < -2147483648LL)
+			return (0);
+		str++;
 	}
 	return (1);
 }
 
-int is_number_str(const char *str)
+int	is_number_str(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str || !str[0])
-		return 0;
+		return (0);
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	if (!str[i])
-		return 0;
+		return (0);
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			return 0;
+			return (0);
 		i++;
 	}
-	return 1;
+	return (1);
 }
