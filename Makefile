@@ -35,7 +35,7 @@ vpath %.c $(SRC_DIRS)
 PARSING_FILES := input_check.c parser.c free_funktions.c define.c fill_stack.c
 PARSING := $(addprefix parser/, $(PARSING_FILES))
 
-SWAPS_FILES := do_rr.c do_pa.c do_rb.c do_ra.c do_ss.c do_sa.c do_sb.c do_rrr.c do_pb.c do_rrb.c do_rra.c
+SWAPS_FILES := do_rr.c do_pa.c do_rb.c do_ra.c do_ss.c do_sa.c do_sb.c do_rrr.c do_pb.c do_rrb.c do_rra.c silent_operations.c
 SWAPS := $(addprefix swaps/, $(SWAPS_FILES))
 
 ALGO_FILES := sorting.c help_sorting.c check_funktions.c stack_a_funktions.c rotation.c

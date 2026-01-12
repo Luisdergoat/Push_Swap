@@ -12,27 +12,9 @@
 
 #include "swaps.h"
 
-void do_ss(t_list *stack_a, t_list *stack_b)
+void	do_ss(t_list *stack_a, t_list *stack_b)
 {
-	t_node *first;
-	t_node *second;
-	int temp;
-
-	if (stack_a->size >= 2)
-	{
-		first = stack_a->head;
-		second = first->next;
-		temp = first->value;
-		first->value = second->value;
-		second->value = temp;
-	}
-	if (stack_b->size >= 2)
-	{
-		first = stack_b->head;
-		second = first->next;
-		temp = first->value;
-		first->value = second->value;
-		second->value = temp;
-	}
+	swap_stack_silent(stack_a);
+	swap_stack_silent(stack_b);
 	write(1, "ss\n", 3);
 }

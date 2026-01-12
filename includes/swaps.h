@@ -41,5 +41,8 @@ void	help_pa(t_list *stack_a, t_node *swaper);
 void	more_help_pa(t_list *stack_b, t_node *swaper);
 void	help_pb(t_list *stack_b, t_node *swaper);
 void	more_help_pb(t_list *stack_a, t_node *swaper);
+void	rotate_stack_silent(t_list *stack);
+void	reverse_rotate_stack_silent(t_list *stack);
+void	swap_stack_silent(t_list *stack);
 
 #endif

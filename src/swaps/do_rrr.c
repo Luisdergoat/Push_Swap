@@ -12,29 +12,9 @@
 
 #include "swaps.h"
 
-void do_rrr(t_list *stack_a, t_list *stack_b)
+void	do_rrr(t_list *stack_a, t_list *stack_b)
 {
-	t_node *shifter;
-
-	if (stack_a->size >= 2)
-	{
-		shifter = stack_a->tail;
-		stack_a->tail = shifter->prev;
-		stack_a->tail->next = NULL;
-		shifter->next = stack_a->head;
-		shifter->prev = NULL;
-		stack_a->head->prev = shifter;
-		stack_a->head = shifter;
-	}
-	if (stack_b->size >= 2)
-	{
-		shifter = stack_b->tail;
-		stack_b->tail = shifter->prev;
-		stack_b->tail->next = NULL;
-		shifter->next = stack_b->head;
-		shifter->prev = NULL;
-		stack_b->head->prev = shifter;
-		stack_b->head = shifter;
-	}
+	reverse_rotate_stack_silent(stack_a);
+	reverse_rotate_stack_silent(stack_b);
 	write(1, "rrr\n", 4);
 }

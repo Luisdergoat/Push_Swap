@@ -60,21 +60,15 @@ int find_min_index(t_list *stack_a)
 	return (min_index);
 }
 
-void fastest_rotate(t_list *stack_a)
+void	fastest_rotate(t_list *stack_a)
 {
-	int min_index;
-	int size;
-	int cost_forward;
-	int cost_reverse;
-	int rotations;
+	int	min_index;
+	int	rotations;
 
 	min_index = find_min_index(stack_a);
 	if (min_index == 0)
-		return;
-	size = stack_a->size;
-	cost_forward = min_index;
-	cost_reverse = size - min_index;
-	if (cost_forward <= cost_reverse)
+		return ;
+	if (min_index <= stack_a->size - min_index)
 	{
 		rotations = 0;
 		while (rotations < min_index)
@@ -86,7 +80,7 @@ void fastest_rotate(t_list *stack_a)
 	else
 	{
 		rotations = 0;
-		while (rotations < cost_reverse)
+		while (rotations < stack_a->size - min_index)
 		{
 			do_rra(stack_a);
 			rotations++;
