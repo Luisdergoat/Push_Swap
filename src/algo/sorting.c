@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 23:00:48 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/09 02:42:44 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 11:58:31 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,10 @@ void sort(t_list *stack_a, t_list *stack_b)
 	}
 	if (find_min_index(stack_a) != 0)
 		fastest_rotate(stack_a);
+}
+
+void sort_two(t_list *stack_a)
+{
+	if (stack_a->head->value > stack_a->head->next->value)
+		do_sa;
 }

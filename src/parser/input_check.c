@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fits_.c                                            :+:      :+:    :+:   */
+/*   input_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 02:58:18 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/09 02:58:43 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 12:04:09 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int fits_in_int(const char *str)
 	sign = 1;
 	if (*str == '+' || *str == '-')
 	{	
-		ft_putchar_fd("Error\n", 2);
 		if (*str == '-')
 			sign = -1;
 		str++;
@@ -35,7 +34,7 @@ int fits_in_int(const char *str)
             return 0;
         str++;
 	}
-	return 1;
+	return (1);
 }
 
 int is_number_str(const char *str)

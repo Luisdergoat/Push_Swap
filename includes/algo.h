@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 23:16:26 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/09 03:02:37 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 11:59:14 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	start_sort(t_list *stack_a, t_list *stack_b);
 t_cost	find_cheapest_move(t_list *stack_a, t_list *stack_b);
 t_cost	calculate_cost(t_list *stack_a, t_list *stack_b, t_node *element);
 void	sort(t_list *stack_a, t_list *stack_b);
+void sort_two(t_list *stack_a);
 
 //help functions
 int		get_index(t_list *stack_b, t_node *element);

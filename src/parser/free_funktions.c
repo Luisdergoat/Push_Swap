@@ -1,23 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define.c                                           :+:      :+:    :+:   */
+/*   free_funktions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/09 02:56:55 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 10:47:22 by lunsold          ###   ########.fr       */
+/*   Created: 2026/01/12 11:56:50 by lunsold           #+#    #+#             */
+/*   Updated: 2026/01/12 12:02:02 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void list_def(t_list *a_list, t_list *b_list)
+void free_split(char **split)
 {
-	a_list->head = NULL;
-	a_list->tail = NULL;
-	a_list->size = 0;
-	b_list->head = NULL;
-	b_list->tail = NULL;
-	b_list->size = 0;
+	int i;
+	if (!split)
+		return ;
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+
+void free_stack(t_list *stack)
+{
+	t_node *current;
+	t_node *next;
+
+	current = stack->head;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	stack->head = NULL;
+	stack->tail = NULL;
+	stack->size = 0;
 }

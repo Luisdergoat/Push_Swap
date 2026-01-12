@@ -3,16 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+         #
+#    By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/06 10:52:05 by lunsold           #+#    #+#              #
-#    Updated: 2026/01/09 02:25:11 by lunsold          ###   ########.fr        #
+#    Updated: 2026/01/12 12:20:11 by lunsold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 
@@ -25,7 +24,7 @@ OBJS_DIR = _obj
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 INC_DIR := includes $(LIBFT_DIR)
-SRC_DIR := src src/algo src/swaps src/main
+SRC_DIR := src src/algo src/swaps src/parser
 HEADERS = -I $(LIBFT_DIR)/includes
 
 
@@ -43,9 +42,11 @@ swaps_FILES := do_rr.c do_pa.c do_rb.c do_ra.c do_ss.c \
 do_sa.c do_rrr.c do_pb.c do_rrb.c do_rra.c
 swaps := $(addprefix $(SRC_DIR)/swaps/, $(swaps_FILES))
 
+PARSING_FILES := input_check.c parser.c free_funktions.c define.c fill_stack.c
+PARSING := $(addprefix $(SRC_DIR)/parser/, $(PARSING_FILES))
 
 SRC_FILES := main.c
-SRC := $(addprefix $(SRC_DIR)/, $(SRC_FILES)) $(ALGO) $(swaps)
+SRC := $(addprefix src/, $(SRC_FILES) $(ALGO) $(PARSING) $(swaps))
 
 
 ################################################################################
@@ -53,6 +54,12 @@ SRC := $(addprefix $(SRC_DIR)/, $(SRC_FILES)) $(ALGO) $(swaps)
 ################################################################################
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRC:%.c=%.o))
+
+#compilation flags and linking options
+CFLAGS := -Wall -Wextra -Werror -g -IIncludes -Ilibft -MMD -MP $(addprefix -I, $(INC_DIRS))
+LDFLAGS := -Llibft -lft
+CFLAGS_SAN := $(CFLAGS) -fsanitize=address -g
+LDFLAGS_SAN := $(LDFLAGS) -fsanitize=address
 
 
 all: $(NAME)
@@ -94,4 +101,12 @@ re: fclean all
 
 CHECKER = ./checker_linux
 
-.PHONY: all clean fclean re
+ARG = "956 187 188 896"
+
+test: all
+	ARG="956 187 188 896"; ./push_swap $$ARG | $(CHECKER) $$ARG
+
+test_rand: all
+	ARG_RAND=$$(jot -r 36 10000000 99999999) && ./push_swap $$ARG_RAND | ./checker_Mac $$ARG_RAND
+
+.PHONY: all clean fclean re test test_rand

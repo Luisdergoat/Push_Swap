@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
+/*   By: lunsold <lunsold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 10:52:10 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/08 22:36:26 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/12 12:03:10 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,10 @@ void	add_node_to_end(t_list *list, t_node *new_node);
 void	add_node_to_stack(t_list *list, int value);
 int		is_number_str(const char *str);
 int		fits_in_int(const char *str);
+bool	parse_and_validate(t_list *stack_a, char **args);
+bool	is_sorted(t_list *stack);
+bool	has_duplicate(t_list *stack_a, int value);
+void	free_stack(t_list *stack);
+void	free_split(char **split);
 
 #endif
