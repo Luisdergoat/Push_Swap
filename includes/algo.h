@@ -6,22 +6,22 @@
 /*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 23:16:26 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 18:29:48 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/13 11:25:09 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ALGO_H
 # define ALGO_H
 
+//includes
+# include "push_swap.h"
+# include "libft.h"
+# include "swaps.h"
+# include <stdbool.h>
+
 // Forward declarations
 typedef struct s_node	t_node;
 typedef struct s_list	t_list;
-
-//includes
-#include "push_swap.h"
-#include "libft.h"
-#include "swaps.h"
-#include <stdbool.h>
 
 //linked list def
 typedef struct s_rotation

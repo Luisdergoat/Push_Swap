@@ -6,21 +6,21 @@
 /*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 02:58:18 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 18:35:50 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/13 11:34:53 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int fits_in_int(const char *str)
+int	fits_in_int(const char *str)
 {
-	long long n;
-	int sign;
+	long long	n;
+	int			sign;
 
 	n = 0;
 	sign = 1;
 	if (*str == '+' || *str == '-')
-	{	
+	{
 		if (*str == '-')
 			sign = -1;
 		str++;
@@ -30,7 +30,7 @@ int fits_in_int(const char *str)
 		n = n * 10 + (*str - '0');
 		if (sign == 1 && n > 2147483647LL)
 			return (0);
-		if (sign == -1 && -n < -2147483648LL)
+		if (sign == -1 && (-n) < -2147483648LL)
 			return (0);
 		str++;
 	}

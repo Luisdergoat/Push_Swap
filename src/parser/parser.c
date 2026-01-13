@@ -6,7 +6,7 @@
 /*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 11:47:25 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 18:36:24 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/13 11:30:23 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	has_duplicate(t_list *stack_a, int value)
 	{
 		if (current->value == value)
 			return (true);
-		current = current->next;		
+		current = current->next;
 	}
 	return (false);
 }

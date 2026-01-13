@@ -6,13 +6,13 @@
 /*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 02:56:55 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 18:31:40 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/13 11:26:26 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void list_def(t_list *a_list, t_list *b_list)
+void	list_def(t_list *a_list, t_list *b_list)
 {
 	a_list->head = NULL;
 	a_list->tail = NULL;

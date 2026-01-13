@@ -6,22 +6,22 @@
 /*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 07:20:52 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 18:38:58 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/13 11:25:49 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SWAPS_H
 # define SWAPS_H
 
-// Forward declarations 
-typedef struct s_node	t_node;
-typedef struct s_list	t_list;
-typedef struct s_cost	t_cost;
-
 //includes
 # include "push_swap.h"
 # include "libft.h"
 # include "algo.h"
+
+// Forward declarations 
+typedef struct s_node	t_node;
+typedef struct s_list	t_list;
+typedef struct s_cost	t_cost;
 
 //function prototypes
 void	do_sa(t_list *stack_a);

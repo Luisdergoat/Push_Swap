@@ -6,17 +6,12 @@
 /*   By: lunsold <lunsold@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 10:52:10 by lunsold           #+#    #+#             */
-/*   Updated: 2026/01/12 18:38:51 by lunsold          ###   ########.fr       */
+/*   Updated: 2026/01/13 11:26:10 by lunsold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-// Forward declarations
-
-typedef struct s_cost		t_cost;
-typedef struct s_bool_flags	t_bool_flags;
 
 //includes
 # include "libft.h"
@@ -31,6 +26,10 @@ typedef struct s_bool_flags	t_bool_flags;
 # include <stdbool.h>
 # include <unistd.h>
 # include <limits.h>
+
+// Forward declarations
+typedef struct s_cost		t_cost;
+typedef struct s_bool_flags	t_bool_flags;
 
 //linked list def
 typedef struct s_node
