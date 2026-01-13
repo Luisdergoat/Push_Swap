@@ -45,7 +45,7 @@ t_cost	calculate_cost(t_list *stack_a, t_list *stack_b, t_node *element)
 
 	index_b = get_index(stack_b, element);
 	target_a = find_target_in_a(stack_a, element->value);
-	result = calculate_r_rr(stack_a, stack_b, target_a, index_b, 0);
+	result = calculate_r_rr(stack_a, stack_b, target_a, index_b);
 	return (result);
 }
 

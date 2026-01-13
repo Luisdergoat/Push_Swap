@@ -22,11 +22,11 @@ void list_def(t_list *a_list, t_list *b_list)
 	b_list->size = 0;
 }
 
-t_cost	def_bool(t_cost result, bool u_rr, bool u_rrr, bool dir_a, bool dir_b)
+t_cost	def_bool(t_cost result, t_bool_flags flags)
 {
-	result.use_rr = u_rr;
-	result.use_rrr = u_rrr;
-	result.dir_a_forward = dir_a;
-	result.dir_b_forward = dir_b;
+	result.use_rr = flags.use_rr;
+	result.use_rrr = flags.use_rrr;
+	result.dir_a_forward = flags.dir_a_forward;
+	result.dir_b_forward = flags.dir_b_forward;
 	return (result);
 }

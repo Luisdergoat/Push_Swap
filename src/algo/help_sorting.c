@@ -29,20 +29,18 @@ int	get_index(t_list *stack_b, t_node *element)
 	return (-1);
 }
 
-t_cost	calculate_r_rr(t_list *a, t_list *b, int ta, int ib, int tmp)
+t_cost	calculate_r_rr(t_list *a, t_list *b, int ta, int ib)
 {
-	int		cost_ra;
-	int		cost_rra;
-	int		cost_rb;
-	int		cost_rrb;
-	t_cost	result;
+	t_rotation	rot;
+	int			min;
+	t_cost		result;
 
-	cost_ra = ta;
-	cost_rra = a->size - ta;
-	cost_rb = ib;
-	cost_rrb = b->size - ib;
-	tmp = check_options(cost_ra, cost_rb, cost_rra, cost_rrb);
-	result = res_check(cost_ra, cost_rb, cost_rra, cost_rrb, tmp);
+	rot.ra = ta;
+	rot.rra = a->size - ta;
+	rot.rb = ib;
+	rot.rrb = b->size - ib;
+	min = check_options(rot);
+	result = res_check(rot, min);
 	return (result);
 }
 
@@ -55,15 +53,18 @@ int	minook(int cost_a, int cost_b)
 
 t_cost	def_result(t_cost result, int cost_a, int cost_b, int option)
 {
+	t_bool_flags	flags;
+
 	result.moves_a = cost_a;
 	result.moves_b = cost_b;
 	if (option == 1)
-		result = def_bool(result, true, false, true, true);
+		flags = (t_bool_flags){true, false, true, true};
 	if (option == 2)
-		result = def_bool(result, false, false, true, false);
+		flags = (t_bool_flags){false, false, true, false};
 	if (option == 3)
-		result = def_bool(result, false, false, false, true);
+		flags = (t_bool_flags){false, false, false, true};
 	if (option == 4)
-		result = def_bool(result, false, true, false, false);
+		flags = (t_bool_flags){false, true, false, false};
+	result = def_bool(result, flags);
 	return (result);
 }

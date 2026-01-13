@@ -24,6 +24,22 @@ typedef struct s_list	t_list;
 #include <stdbool.h>
 
 //linked list def
+typedef struct s_rotation
+{
+	int	ra;
+	int	rb;
+	int	rra;
+	int	rrb;
+}					t_rotation;
+
+typedef struct s_bool_flags
+{
+	bool	use_rr;
+	bool	use_rrr;
+	bool	dir_a_forward;
+	bool	dir_b_forward;
+}					t_bool_flags;
+
 typedef struct s_cost
 {
 	t_node	*element;
@@ -48,7 +64,7 @@ void	sort_two(t_list *stack_a);
 
 //help functions
 int		get_index(t_list *stack_b, t_node *element);
-t_cost	calculate_r_rr(t_list *a, t_list *b, int ta, int ib, int tmp);
+t_cost	calculate_r_rr(t_list *a, t_list *b, int ta, int ib);
 int		minook(int cost_a, int cost_b);
 t_cost	def_result(t_cost result, int cost_a, int cost_b, int option);
 t_cost	rotate_stacks(t_list *stack_a, t_list *stack_b, t_cost cheapest);
@@ -57,8 +73,8 @@ int		find_target_in_a(t_list *stack_a, int value);
 void	help_sort_three(t_list *stack_a);
 int		find_min_index(t_list *stack_a);
 void	fastest_rotate(t_list *stack_a);
-t_cost	res_check(int ra, int rb, int rra, int rrb, int min);
-int		check_options(int ra, int rb, int rra, int rrb);
-int		options_check(int ra, int rb, int rra, int rrb, int opt);
+t_cost	res_check(t_rotation rot, int min);
+int		check_options(t_rotation rot);
+int		options_check(t_rotation rot, int opt);
 
 #endif

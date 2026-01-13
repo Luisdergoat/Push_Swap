@@ -15,7 +15,8 @@
 
 // Forward declarations
 
-typedef struct s_cost	t_cost;
+typedef struct s_cost		t_cost;
+typedef struct s_bool_flags	t_bool_flags;
 
 //includes
 # include "libft.h"
@@ -59,6 +60,6 @@ bool	is_sorted(t_list *stack);
 bool	has_duplicate(t_list *stack_a, int value);
 void	free_stack(t_list *stack);
 void	free_split(char **split);
-t_cost	def_bool(t_cost result, bool u_rr, bool u_rrr, bool dir_a, bool dir_b);
+t_cost	def_bool(t_cost result, t_bool_flags flags);
 
 #endif

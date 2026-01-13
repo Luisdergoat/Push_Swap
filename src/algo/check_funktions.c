@@ -12,7 +12,7 @@
 
 #include "algo.h"
 
-int	check_options(int ra, int rb, int rra, int rrb)
+int	check_options(t_rotation rot)
 {
 	int	option1;
 	int	option2;
@@ -20,53 +20,53 @@ int	check_options(int ra, int rb, int rra, int rrb)
 	int	option4;
 	int	min_cost;
 
-	option1 = ra + rb - minook(ra, rb);
-	option2 = ra + rrb;
-	option3 = rra + rb;
-	option4 = rra + rrb - minook(rra, rrb);
+	option1 = rot.ra + rot.rb - minook(rot.ra, rot.rb);
+	option2 = rot.ra + rot.rrb;
+	option3 = rot.rra + rot.rb;
+	option4 = rot.rra + rot.rrb - minook(rot.rra, rot.rrb);
 	min_cost = minook(minook(option1, option2), minook(option3, option4));
 	return (min_cost);
 }
 
-int	options_check(int ra, int rb, int rra, int rrb, int opt)
+int	options_check(t_rotation rot, int opt)
 {
 	int	res;
 
 	if (opt == 1)
 	{
-		res = ra + rb - minook(ra, rb);
+		res = rot.ra + rot.rb - minook(rot.ra, rot.rb);
 		return (res);
 	}
 	if (opt == 2)
 	{
-		res = ra + rrb;
+		res = rot.ra + rot.rrb;
 		return (res);
 	}
 	if (opt == 3)
 	{
-		res = rra + rb;
+		res = rot.rra + rot.rb;
 		return (res);
 	}
 	if (opt == 4)
 	{
-		res = rra + rrb - minook(rra, rrb);
+		res = rot.rra + rot.rrb - minook(rot.rra, rot.rrb);
 		return (res);
 	}
 	return (-1);
 }
 
-t_cost	res_check(int ra, int rb, int rra, int rrb, int min)
+t_cost	res_check(t_rotation rot, int min)
 {
 	t_cost	result;
 
 	result.total_cost = min;
-	if (min == options_check(ra, rb, rra, rrb, 1))
-		result = def_result(result, ra, rb, 1);
-	else if (min == options_check(ra, rb, rra, rrb, 2))
-		result = def_result(result, ra, rrb, 2);
-	else if (min == options_check(ra, rb, rra, rrb, 3))
-		result = def_result(result, rra, rb, 3);
-	else if (min == options_check(ra, rb, rra, rrb, 4))
-		result = def_result(result, rra, rrb, 4);
+	if (min == options_check(rot, 1))
+		result = def_result(result, rot.ra, rot.rb, 1);
+	else if (min == options_check(rot, 2))
+		result = def_result(result, rot.ra, rot.rrb, 2);
+	else if (min == options_check(rot, 3))
+		result = def_result(result, rot.rra, rot.rb, 3);
+	else if (min == options_check(rot, 4))
+		result = def_result(result, rot.rra, rot.rrb, 4);
 	return (result);
 }
